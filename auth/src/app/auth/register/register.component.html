@@ -1,0 +1,102 @@
+<div class="py-3 text-center">
+  <img
+    src="https://i.stack.imgur.com/dMXbE.png"
+    alt="Logo"
+    class="mb-2 d-block mx-auto"
+    width="82"
+    height="80"
+  />
+  <h2>Registratie formulier</h2>
+  <p class="lead">Vul de gegevens in om een account te maken</p>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div *ngIf="isLoading" class="row g-3">Loading..</div>
+    <div *ngIf="!isLoading" class="row g-3">
+      <div class="col-sm-6">
+        <label for="voornaam" class="form-label">Voornaam</label>
+        <input
+          type="text"
+          id="voornaam"
+          placeholder="Anthenny"
+          class="form-control"
+          ngModel
+          name="voornaam"
+          required
+        />
+        <div class="invalid-feedback">
+          U moet een geldige eerste naam invoeren
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <label for="achternaam" class="form-label">Achternaam</label>
+        <input
+          type="text"
+          id="achternaam"
+          placeholder="de Hoon"
+          class="form-control"
+          ngModel
+          name="achternaam"
+          required
+        />
+        <div class="invalid-feedback">
+          U moet een geldige achternaam invoeren
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="username" class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text">@</span>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="NeQo"
+            class="form-control"
+            ngModel
+            name="username"
+            required
+          />
+        </div>
+        <div class="invalid-feedback">U moet een geldige username invoeren</div>
+      </div>
+      <div class="col-12">
+        <label for="password" class="form-label">Wachtwoord</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Vul uw wachtwoord in"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+        />
+
+        <div class="invalid-feedback">
+          U moet een geldig wachtwoord invoeren
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="confirmPassword" class="form-label"
+          >Bevestig wachtwoord</label
+        >
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Bevestig uw wachtwoord"
+          class="form-control"
+          ngModel
+          name="confirmPassword"
+          required
+        />
+
+        <div class="invalid-feedback">Wachtwoord matched niet</div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="submit" [disabled]="!f.valid">
+      Submit
+    </button>
+    <p>Heb je al een account? <a href="">Login!</a></p>
+  </form>
+</div>
