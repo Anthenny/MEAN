@@ -16,7 +16,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Een gebruiker moet een username hebben"],
     lowercase: true,
+    unique: true,
   },
+  keyphrase: String,
   wachtwoord: {
     type: String,
     required: [true, "Een gebruiker moet een wachtwoord hebben"],

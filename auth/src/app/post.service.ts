@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class PostService {
   isLoading: boolean = false;
+  userObj!: any;
 
   constructor(private http: HttpClient) {}
 
@@ -11,6 +12,7 @@ export class PostService {
     voornaam: string,
     achternaam: string,
     username: string,
+    keyphrase: string,
     wachtwoord: string
   ) {
     this.isLoading = true;
@@ -19,6 +21,7 @@ export class PostService {
         voornaam,
         achternaam,
         username,
+        keyphrase,
         wachtwoord,
       })
       .subscribe((responseData) => {
@@ -27,7 +30,16 @@ export class PostService {
       });
   }
 
-  fetchUsers() {
-    //..
+  loginUser(username: string, wachtwoord: string) {
+    this.isLoading = true;
+    this.http
+      .post('http://localhost:3000/auth/login', {
+        username,
+        wachtwoord,
+      })
+      .subscribe((responseData) => {
+        this.isLoading = false;
+        this.userObj = responseData;
+      });
   }
 }

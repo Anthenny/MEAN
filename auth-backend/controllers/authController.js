@@ -7,6 +7,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     voornaam: req.body.voornaam,
     achternaam: req.body.achternaam,
     username: req.body.username,
+    keyphrase: req.body.keyphrase,
     wachtwoord: req.body.wachtwoord,
   });
 
